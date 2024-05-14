@@ -1,0 +1,15 @@
+{% if messages %}
+{% for message in messages %}
+  {{ message.message }}
+{% endfor %}
+{% endif %}
+<form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <hr>
+  {% for picture in pictures %}
+    <img width="100px" height="100px" src="{{ picture.picture.url }}">
+  {% endfor %}
+  {{ picture_form.as_p }}
+  <input type="submit" value="更新">
+</form>
